@@ -4,6 +4,7 @@ import { LogOut } from "lucide-react";
 
 const menuItems = [
   { name: "La Poste", path: "/agent/dashboard/poste" },
+  { name: "CasGeneraleSensible", path: "/agent/dashboard/CasGeneraleSensible" },
   { name: "ADR", path: "/agent/dashboard/adr" },
   { name: "DPCR", path: "/agent/dashboard/dpcr" },
   { name: "Saba Bank", path: "/agent/dashboard/sababank" },

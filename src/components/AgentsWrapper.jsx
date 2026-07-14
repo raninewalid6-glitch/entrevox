@@ -28,6 +28,7 @@ import AnnulationCommande from "../Agent/annulationAgent";
 import EABAgent from "../Agent/eabAgent";
 import PlainteForm from "../Agent/Far";
 import CallCenterForm from "../Agent/signalement";
+import CasSensibleGenerale from "../Agent/CasGeneraleSensible";
 
 export default function AgentsWrapper() {
   const { user } = useAuth();
@@ -97,6 +98,7 @@ export default function AgentsWrapper() {
       defaultRedirect = "mass"; // redirect relatif -> /Agents/mass
       childRoutes = [
         <Route key="mass" path="mass" element={<MassAgent />} />,
+        <Route key="CasGeneraleSensible" path="CasGeneraleSensible" element={<CasSensibleGenerale />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
