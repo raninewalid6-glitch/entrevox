@@ -269,6 +269,11 @@ export const menuDataLigne2020 = [
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Agents/CasGeneraleSensible",
+        label: "Cas Generale Sensible",
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Agents/signalement",
         label: "Commerce",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -327,6 +332,11 @@ export const menuDataLigneEab = [
         label: "EAB Bank",
         icon: <Database className="w-4 h-4 opacity-70" />,
       },
+      {
+        path: "/Agents/CasGeneraleSensible",
+        label: "Cas Generale Sensible",
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
     ],
   },
 ];
@@ -339,6 +349,11 @@ export const menuDataLigneDjiTelcom = [
         path: "/Agents/Djibouti-Tel",
         label: "Djibouti Telecom",
         icon: <Database className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/CasGeneraleSensible",
+        label: "Cas Generale Sensible",
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
     ],
   },
@@ -400,6 +415,7 @@ export const menuDataforClientMass = [
       },
     ],
   },
+  
   {
     title: "Rapports Deleguer",
     items: [
@@ -419,6 +435,11 @@ export const menuAllLigne = [
       {
         path: "/Agents/mass",
         label: "Mass",
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/CasGeneraleSensible",
+        label: "Cas Generale Sensible",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {

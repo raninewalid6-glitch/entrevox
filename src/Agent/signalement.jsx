@@ -38,6 +38,7 @@ const REGIONS_QUARTIERS = {
     "Yoboki",
     "Dakka",
     "Moutrous",
+    "As-Eyla",
   ],
   Obock: [
     "Oulma",
@@ -172,6 +173,7 @@ const QUARTIERS_PAR_COMMUNE = {
     "Cité millitaire",
     "Balbala jajab",
     "cité sogik",
+    "cité chabellé",
   ],
   Boulaos: [
     "Quartier 1",
@@ -205,8 +207,12 @@ const QUARTIERS_PAR_COMMUNE = {
     "FNP",
     "cité poudrière",
     "ryad",
+    "Cité wadagiir",
     "Place-rainbo",
     "Saline Ouest",
+    "xeero fardaha",
+    "Port de pêche",
+    "Guelleh Batal",
   ],
   "Ras-Dika": [
     "Plateau",
@@ -215,6 +221,7 @@ const QUARTIERS_PAR_COMMUNE = {
     "Serpent",
     "Paid",
     "Camp-Lelong",
+    "place-menelik",
     
     
   ],
