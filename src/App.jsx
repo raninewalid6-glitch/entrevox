@@ -144,6 +144,10 @@ export default function App() {
                   element={<Dashboard />}
                 />
                 <Route path="/Equipe_Qualiter/adr" element={<Adr />} />
+                <Route
+                  path="/Equipe_Qualiter/cas-sensible-general"
+                  element={<CasGeneralSensible />}
+                />
                 <Route path="/Equipe_Qualiter/agents" element={<Agents />} />
                 <Route
                   path="/Equipe_Qualiter/grille-evaluation"

@@ -99,6 +99,7 @@ export default function AgentsWrapper() {
       childRoutes = [
         <Route key="mass" path="mass" element={<MassAgent />} />,
         <Route key="CasGeneraleSensible" path="CasGeneraleSensible" element={<CasSensibleGenerale />} />,
+        <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
@@ -123,6 +124,7 @@ export default function AgentsWrapper() {
       defaultRedirect = "mass"; // redirect relatif -> /Agents/mass
       childRoutes = [
         <Route key="mass" path="mass" element={<MassAgent />} />,
+        <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
@@ -153,6 +155,7 @@ export default function AgentsWrapper() {
       menuItems = menuLigneEabDjibtel;
       defaultRedirect = "EAB"; // redirect relatif -> /Agents/mass
       childRoutes = [
+        <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
         <Route key="EAB" path="EAB" element={<EABAgent />} />,
         <Route
           key="djibouti-tel"
@@ -165,13 +168,17 @@ export default function AgentsWrapper() {
     case "ligne_eab":
       menuItems = menuDataLigneEab;
       defaultRedirect = "EAB";
-      childRoutes = [<Route key="EAB" path="EAB" element={<EABAgent />} />];
+      childRoutes = [
+        <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
+        <Route key="EAB" path="EAB" element={<EABAgent />} />,
+      ];
       break;
     case "mix_ligne_eab_2020":
       menuItems = menuLigne2020Eab;
       defaultRedirect = "EAB";
       childRoutes = [
         <Route key="mass" path="mass" element={<MassAgent />} />,
+        <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
@@ -197,6 +204,7 @@ export default function AgentsWrapper() {
       defaultRedirect = "EAB";
       childRoutes = [
         <Route key="mass" path="mass" element={<MassAgent />} />,
+        <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
@@ -227,6 +235,7 @@ export default function AgentsWrapper() {
       menuItems = menuDataLigneDjiTelcom;
       defaultRedirect = "djibouti-tel";
       childRoutes = [
+        <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
         <Route
           key="djibouti-tel"
           path="djibouti-tel"

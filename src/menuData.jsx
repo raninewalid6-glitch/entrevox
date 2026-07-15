@@ -149,11 +149,12 @@ export const menuDataEquipe_Qualiter = [
         label: "Grille d'Évaluation",
         icon: <ClipboardCheck />,
       },
-        {
-        path: "/cas-sensible-general",
+       {
+        path: "/Equipe_Qualiter/cas-sensible-general",
         label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
+       
     ],
   },
 
@@ -176,11 +177,13 @@ export const menuDataEquipe_Qualiter = [
           { path: "/Equipe_Qualiter/masse/hs", label: "Hors Projet" },
         ],
       },
+       
       {
         path: "/Equipe_Qualiter/signalement",
         label: "Commerce",
         icon: <ClipboardList className="w-4 h-4" />,
       },
+      
       {
         path: "/Equipe_Qualiter/adr",
         label: "ADR",
@@ -233,6 +236,7 @@ export const menuDataEquipe_Qualiter = [
         icon: <ClipboardList className="w-4 h-4" />,
       },
     ],
+    
   },
   {
     title: "Ligne EAB",
@@ -252,6 +256,7 @@ export const menuDataEquipe_Qualiter = [
         label: "Djibouti Telecom",
         icon: <Database className="w-4 h-4 opacity-70" />,
       },
+      
     ],
   },
 ];
@@ -264,6 +269,11 @@ export const menuFar = [
         path: "/Agent/Far",
         label: "Far",
         icon: <FileText className="w-4 h-4 opacity-70" />,
+      },
+       {
+        path: "/Agents/cas-sensible-general",
+        label: "Cas Sensible Général",
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
     ],
   },
@@ -278,9 +288,9 @@ export const menuDataLigne2020 = [
         label: "Mass",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
-      {
-        path: "/Agents/CasGeneraleSensible",
-        label: "Cas Generale Sensible",
+       {
+        path: "/Agents/cas-sensible-general",
+        label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
@@ -343,8 +353,8 @@ export const menuDataLigneEab = [
         icon: <Database className="w-4 h-4 opacity-70" />,
       },
       {
-        path: "/Agents/CasGeneraleSensible",
-        label: "Cas Generale Sensible",
+        path: "/Agents/cas-sensible-general",
+        label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
     ],
@@ -360,9 +370,10 @@ export const menuDataLigneDjiTelcom = [
         label: "Djibouti Telecom",
         icon: <Database className="w-4 h-4 opacity-70" />,
       },
-      {
-        path: "/Agents/CasGeneraleSensible",
-        label: "Cas Generale Sensible",
+     
+       {
+        path: "/Agents/cas-sensible-general",
+        label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
     ],
@@ -447,9 +458,9 @@ export const menuAllLigne = [
         label: "Mass",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
-      {
-        path: "/Agents/CasGeneraleSensible",
-        label: "Cas Generale Sensible",
+       {
+        path: "/Agents/cas-sensible-general",
+        label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
@@ -546,6 +557,11 @@ export const menuLigneEabDjibtel = [
         label: "Djibouti Telecom",
         icon: <Database className="w-4 h-4 opacity-70" />,
       },
+       {
+        path: "/Agents/cas-sensible-general",
+        label: "Cas Sensible Général",
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
     ],
   },
 ];
@@ -563,6 +579,11 @@ export const menuLigne2020Djibtel = [
         path: "/Agents/signalement",
         label: "Commerce",
         icon:<FolderKanban className="w-4 h-4 opacity-70" />,
+      },
+       {
+        path: "/Agents/cas-sensible-general",
+        label: "Cas Sensible Général",
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
         path: "/Agents/adr",
@@ -635,6 +656,11 @@ export const menuLigne2020Eab = [
       {
         path: "/Agents/signalement",
         label: "Commerce",
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
+       {
+        path: "/Agents/cas-sensible-general",
+        label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
