@@ -4,7 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import useAsync from "../hooks/useAsync";
-import { createSensibleCase } from "../api/adr";
+import { CreateSensibleCase } from "../api/casgeneralsensible";
 import { useAuth } from "../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,7 +26,7 @@ export default function CasSensibleGenerale() {
     const { user } = useAuth();
 
     // Utilisation du hook useAsync pour enregistrer le cas sensible
-    const { execute: AdrExecute } = useAsync(createSensibleCase, []);
+    const { execute: AdrExecute } = useAsync(CreateSensibleCase, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

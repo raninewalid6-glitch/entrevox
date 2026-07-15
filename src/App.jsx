@@ -11,6 +11,9 @@ const Accueil = lazy(() => import("./Accueil"));
 
 // Superviseur/Admin/SuperAdmin
 const Adr = lazy(() => import("./superviseur/adr"));
+const CasGeneralSensible = lazy(() =>
+  import("./superviseur/casGeneralSensible"),
+);
 const Agents = lazy(() => import("./superviseur/agents"));
 const CartinData = lazy(() => import("./superviseur/cartin"));
 const Recherche = lazy(() => import("./superviseur/recherche"));
@@ -92,6 +95,10 @@ export default function App() {
               <Route element={<Layout menuItems={menuData} />}>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/adr" element={<Adr />} />
+                <Route
+                  path="/cas-sensible-general"
+                  element={<CasGeneralSensible />}
+                />
                 <Route path="/agents" element={<Agents />} />
                 <Route path="/cartin" element={<CartinData />} />
                 <Route path="/recherche" element={<Recherche />} />

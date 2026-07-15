@@ -61,6 +61,11 @@ export const menuData = [
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/cas-sensible-general",
+        label: "Cas Sensible Général",
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/cartin",
         label: "Cartin",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
