@@ -149,6 +149,11 @@ export const menuDataEquipe_Qualiter = [
         label: "Grille d'Évaluation",
         icon: <ClipboardCheck />,
       },
+        {
+        path: "/cas-sensible-general",
+        label: "Cas Sensible Général",
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
     ],
   },
 
