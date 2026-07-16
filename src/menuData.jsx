@@ -98,7 +98,7 @@ export const menuData = [
       },
       {
         path: "/ColisNontrouverData",
-        label: "Colis non trouvé",
+        label: "La Poste",
         icon: <FileText className="w-4 h-4 opacity-70" />,
       },
       {
@@ -222,7 +222,7 @@ export const menuDataEquipe_Qualiter = [
       },
       {
         path: "/Equipe_Qualiter/ColisNontrouverData",
-        label: "Colis non trouvé",
+        label: "La Poste",
         icon: <FileText className="w-4 h-4 opacity-70" />,
       },
       {
@@ -287,6 +287,11 @@ export const menuDataLigne2020 = [
         path: "/Agents/mass",
         label: "Mass",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/la-poste",
+        label: "La Poste",
+        icon: <FileText className="w-4 h-4 opacity-70" />,
       },
        {
         path: "/Agents/cas-sensible-general",
@@ -458,6 +463,11 @@ export const menuAllLigne = [
         label: "Mass",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
+      {
+        path: "/Agents/la-poste",
+        label: "La Poste",
+        icon: <FileText className="w-4 h-4 opacity-70" />,
+      },
        {
         path: "/Agents/cas-sensible-general",
         label: "Cas Sensible Général",
@@ -576,6 +586,11 @@ export const menuLigne2020Djibtel = [
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Agents/la-poste",
+        label: "La Poste",
+        icon: <FileText className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Agents/signalement",
         label: "Commerce",
         icon:<FolderKanban className="w-4 h-4 opacity-70" />,
@@ -652,6 +667,11 @@ export const menuLigne2020Eab = [
         path: "/Agents/mass",
         label: "Mass",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/la-poste",
+        label: "La Poste",
+        icon: <FileText className="w-4 h-4 opacity-70" />,
       },
       {
         path: "/Agents/signalement",

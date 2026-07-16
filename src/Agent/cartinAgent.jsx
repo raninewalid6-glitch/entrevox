@@ -32,6 +32,7 @@ const formSchema = z.object({
   commande: z.string().min(1, "Le numéro de commande est requis."),
   dateCommande: z.string().min(1, "La date de commande est requise."),
   probleme: z.string().min(5, "Veuillez décrire le problème."),
+  reponseFournie: z.string().min(1, "La réponse fournie est requise."),
 });
 
 export default function Cartinagent() {
@@ -43,6 +44,7 @@ export default function Cartinagent() {
       commande: "",
       dateCommande: "",
       probleme: "",
+      reponseFournie: "",
     },
   });
   const { user } = useAuth();
@@ -196,6 +198,27 @@ export default function Cartinagent() {
                         placeholder="Décrivez votre problème en détail..."
                         {...field}
                         className="border-slate-300 min-h-[120px]"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Réponse fournie */}
+              <FormField
+                control={form.control}
+                name="reponseFournie"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-slate-700 font-medium">
+                      Réponse fournie
+                    </FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Réponse communiquée au client..."
+                        {...field}
+                        className="border-slate-300 min-h-[100px]"
                       />
                     </FormControl>
                     <FormMessage />

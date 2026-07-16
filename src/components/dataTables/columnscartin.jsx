@@ -47,6 +47,15 @@ export const columncartin = [
     ),
   },
   {
+    accessorKey: "reponse_fournie",
+    header: "Réponse fournie",
+    cell: ({ row }) => (
+      <div className="min-w-[300px] max-w-[500px] whitespace-pre-wrap">
+        {row.original.reponse_fournie}
+      </div>
+    ),
+  },
+  {
     accessorKey: "photo",
     header: "Image",
     cell: ({ row }) => {

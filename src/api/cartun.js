@@ -25,6 +25,7 @@ export async function CreateCartin(Donnee, id) {
     numeroCommande: Donnee.commande,
     numeroTelephone: Donnee.telephone,
     probleme: Donnee.probleme,
+    reponseFournie: Donnee.reponseFournie,
   };
 
   try {
