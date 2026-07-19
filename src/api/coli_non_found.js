@@ -17,8 +17,9 @@ export async function SaveColis(Donnee, id) {
     provenance: Donnee.provenance,
     date: Donnee.date,
     reponse_fournie: Donnee.reponse_fournie,
+    commentaire: Donnee.commentaire,
   };
-
+  
   try {
     const res = await fetch(apiUrl, {
       method: "POST",
