@@ -37,8 +37,9 @@ const TELEPHONE_VARIANTS = [
 ];
 
 function findColumn(table, variants) {
+  const allColumns = table.getAllLeafColumns();
   for (const key of variants) {
-    const col = table.getColumn(key);
+    const col = allColumns.find((c) => c.id === key);
     if (col) return col;
   }
   return null;
