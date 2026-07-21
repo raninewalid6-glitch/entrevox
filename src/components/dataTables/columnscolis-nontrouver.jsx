@@ -27,7 +27,9 @@ const CellActionColis = ({
   commentaire,
   reponse_fournie,
   updated_at,
+  onUpdated,
 }) => {
+  const [open, setOpen] = useState(false);
   const [newNom, setNewNom] = useState(nom);
   const [newTelephone, setNewTelephone] = useState(telephone);
   const [newReference, setNewReference] = useState(reference);
@@ -42,6 +44,21 @@ const CellActionColis = ({
   if (user?.role !== "chefCentre") {
     return null;
   }
+
+  // Ré-initialise les champs avec les valeurs de la ligne à chaque ouverture
+  const handleOpenChange = (isOpen) => {
+    setOpen(isOpen);
+    if (isOpen) {
+      setNewNom(nom);
+      setNewTelephone(telephone);
+      setNewReference(reference);
+      setNewType(type);
+      setNewProvenance(provenance);
+      setNewDate(date);
+      setNewCommentaire(commentaire);
+      setNewReponseFournie(reponse_fournie);
+    }
+  };
 
   const handleSave = async () => {
     const donnee = {
@@ -61,6 +78,8 @@ const CellActionColis = ({
       const response = await PartialUpdateColis(donnee, id);
       if (response?.success) {
         toast.success("Mise à jour réussie ✅");
+        setOpen(false);
+        onUpdated?.();
       } else {
         toast.error("Échec : " + (response?.error || "Erreur inconnue"));
         console.log(response?.details);
@@ -72,7 +91,7 @@ const CellActionColis = ({
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="flex gap-1">
           <Pencil className="w-4 h-4" />
@@ -186,7 +205,9 @@ const CellActionColis = ({
           </div>
 
           <div className="flex justify-end gap-2">
-            <Button variant="secondary">Annuler</Button>
+            <Button variant="secondary" onClick={() => setOpen(false)}>
+              Annuler
+            </Button>
             <Button onClick={handleSave}>Enregistrer</Button>
           </div>
         </div>
@@ -195,7 +216,7 @@ const CellActionColis = ({
   );
 };
 
-export const columnsColisNonTrouver = [
+export const columnsColisNonTrouver = (onUpdated) => [
   { accessorKey: "nom", header: "Nom" },
   { accessorKey: "telephone", header: "Téléphone" },
   {
@@ -256,6 +277,7 @@ export const columnsColisNonTrouver = [
         commentaire={row.original.commentaire}
         reponse_fournie={row.original.reponse_fournie}
         updated_at={row.original.updated_at}
+        onUpdated={onUpdated}
       />
     ),
   },

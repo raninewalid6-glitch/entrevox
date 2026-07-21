@@ -3,6 +3,8 @@ import { columnsColisNonTrouver } from "../components/dataTables/columnscolis-no
 import useAsync from "../hooks/useAsync";
 import { ShowColis } from "../api/annulation_cmd";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ColisNontrouverData() {
   const { data, error, loading, execute } = useAsync(ShowColis, []);
@@ -14,6 +16,7 @@ export default function ColisNontrouverData() {
   const safeData = Array.isArray(data) ? data : [];
   return (
     <div className="min-h-screen bg-slate-100 py-8">
+      <ToastContainer position="top-center" />
       <div className="w-[90%] mx-25">
         {/* Header */}
         <div className="mb-6">
@@ -33,7 +36,11 @@ export default function ColisNontrouverData() {
             </h2>
           </div>
           <div className="p-6">
-            <DataTable columns={columnsColisNonTrouver} data={safeData} TypeFilter="nom" />
+            <DataTable
+              columns={columnsColisNonTrouver(execute)}
+              data={safeData}
+              TypeFilter="nom"
+            />
           </div>
         </div>
       </div>
