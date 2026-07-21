@@ -14,6 +14,9 @@ const COMPAGNES = [
     { value: "cartin", label: "Cartin" },
     { value: "dpcr", label: "DPCR" },
     { value: "eab", label: "EAB" },
+    { value: "far", label: "FAR" },
+    { value: "arulos", label: "ARULOS " },
+    { value: "adr", label: "ADR " },
     { value: "mass", label: "MASS" },
     { value: "autre", label: "Autre" },
 ];
