@@ -35,6 +35,36 @@ export async function SaveColis(Donnee, id) {
   }
 }
 
+export async function PartialUpdateColis(Donnee, id) {
+  const apiUrl = `${API_BASE_URL}?method=PartialUpdateColis&id=${id}`;
+
+  const payload = {
+    nom: Donnee.nom,
+    telephone: Donnee.telephone,
+    reference: Donnee.reference,
+    type: Donnee.type,
+    provenance: Donnee.provenance,
+    date: Donnee.date,
+    commentaire: Donnee.commentaire,
+    reponse_fournie: Donnee.reponse_fournie,
+    updated_by: Donnee.updated_by,
+    updated_at: Donnee.updated_at,
+  };
+
+  try {
+    const res = await fetch(apiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error("Erreur réseau détectée");
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du colis :", error);
+  }
+}
+
 export async function Cancel_order_Show() {
   const apiUrl = `${API_BASE_URL}?method=Cancel_order_Show`;
   try {
