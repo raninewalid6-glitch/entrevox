@@ -30,6 +30,7 @@ const formSchema = z.object({
   type: z.string().min(1, "Type de colis requis"),
   provenance: z.string().min(1, "Provenance requise"),
   date: z.string().min(1, "Date obligatoire"),
+  commentaire: z.string().min(1, "commentaire requise"),
   reponse_fournie: z.string().min(1, "Réponse fournie requise"),
 });
 
@@ -47,6 +48,7 @@ export default function LaPoste() {
       provenance: "",
       date: "",
       reponse_fournie: "",
+      commentaire: "",
     },
   });
 
@@ -178,6 +180,23 @@ export default function LaPoste() {
                 )}
               />
 
+              {/* Réponse commentaire */}
+              <FormField
+                control={form.control}
+                name="commentaire"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>commentaire</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="commentaire"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               {/* Réponse fournie */}
               <FormField
                 control={form.control}

@@ -44,6 +44,15 @@ export const columnsColisNonTrouver = [
   { accessorKey: "provenance", header: "Provenance" },
   { accessorKey: "date", header: "Date" },
   {
+    accessorKey: "commentaire",
+    header: "Commentaire",
+    cell: ({ row }) => (
+      <div className="min-w-[300px] max-w-[500px] whitespace-pre-wrap">
+        {row.original.commentaire}
+      </div>
+    ),
+  },
+  {
     accessorKey: "reponse_fournie",
     header: "Réponse fournie",
     cell: ({ row }) => (
