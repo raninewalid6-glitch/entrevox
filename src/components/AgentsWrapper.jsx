@@ -30,6 +30,7 @@ import PlainteForm from "../Agent/Far";
 import CallCenterForm from "../Agent/signalement";
 import CasSensibleGenerale from "../Agent/CasGeneraleSensible";
 import LaPoste from "../Agent/laposteAgent";
+import SupportCartin from "../Agent/supportCartin";
 
 export default function AgentsWrapper() {
   const { user } = useAuth();
@@ -104,6 +105,7 @@ export default function AgentsWrapper() {
         <Route key="la-poste" path="la-poste" element={<LaPoste />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
+        <Route key="support-cartin" path="support-cartin" element={<SupportCartin />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
         <Route key="arulos" path="arulos" element={<ArulosAgent />} />,
         <Route key="dpcr" path="dpcr" element={<FormDPCR />} />,
@@ -130,6 +132,7 @@ export default function AgentsWrapper() {
         <Route key="la-poste" path="la-poste" element={<LaPoste />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
+        <Route key="support-cartin" path="support-cartin" element={<SupportCartin />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
         <Route key="arulos" path="arulos" element={<ArulosAgent />} />,
         <Route key="dpcr" path="dpcr" element={<FormDPCR />} />,
@@ -185,6 +188,7 @@ export default function AgentsWrapper() {
         <Route key="la-poste" path="la-poste" element={<LaPoste />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
+        <Route key="support-cartin" path="support-cartin" element={<SupportCartin />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
         <Route key="arulos" path="arulos" element={<ArulosAgent />} />,
         <Route key="dpcr" path="dpcr" element={<FormDPCR />} />,
@@ -212,6 +216,7 @@ export default function AgentsWrapper() {
         <Route key="la-poste" path="la-poste" element={<LaPoste />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
+        <Route key="support-cartin" path="support-cartin" element={<SupportCartin />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
         <Route key="arulos" path="arulos" element={<ArulosAgent />} />,
         <Route key="dpcr" path="dpcr" element={<FormDPCR />} />,

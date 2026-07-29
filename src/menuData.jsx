@@ -1,4 +1,5 @@
 import {
+  BookOpen,
   ClipboardCheck,
   ClipboardList,
   Database,
@@ -314,6 +315,11 @@ export const menuDataLigne2020 = [
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Agents/support-cartin",
+        label: "Support Cartin",
+        icon: <BookOpen className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Agents/recherche",
         label: "Recherche",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -490,6 +496,11 @@ export const menuAllLigne = [
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Agents/support-cartin",
+        label: "Support Cartin",
+        icon: <BookOpen className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Agents/recherche",
         label: "Recherche",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -611,6 +622,11 @@ export const menuLigne2020Djibtel = [
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Agents/support-cartin",
+        label: "Support Cartin",
+        icon: <BookOpen className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Agents/recherche",
         label: "Recherche",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -692,6 +708,11 @@ export const menuLigne2020Eab = [
         path: "/Agents/cartin",
         label: "Cartin",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/support-cartin",
+        label: "Support Cartin",
+        icon: <BookOpen className="w-4 h-4 opacity-70" />,
       },
       {
         path: "/Agents/recherche",
