@@ -4,6 +4,8 @@ import { columncartin } from "../components/dataTables/columnscartin";
 import useAsync from "../hooks/useAsync";
 import { GetAllCartin } from "../api/cartun";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CartinData() {
   const { data, error, loading, execute } = useAsync(GetAllCartin, []);
@@ -15,6 +17,7 @@ export default function CartinData() {
   const safeData = Array.isArray(data) ? data : [];
   return (
     <div className="min-h-screen bg-slate-100 py-8 w-full">
+      <ToastContainer position="top-center" />
       <div className="w-[90%] mx-25">
         {/* Header avec badge */}
         <div className="mb-8">
@@ -63,7 +66,11 @@ export default function CartinData() {
                 </p>
               </div>
             ) : (
-              <DataTable columns={columncartin} data={safeData} TypeFilter="nom" />
+              <DataTable
+                columns={columncartin(execute)}
+                data={safeData}
+                TypeFilter="nom"
+              />
             )}
           </div>
         </div>
