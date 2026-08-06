@@ -80,6 +80,8 @@ export default function Adr() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6 w-full">
+      {/* Toujours monté : les toasts fonctionnent quel que soit l'onglet actif */}
+      <ToastContainer position="top-center" />
       <Tabs defaultValue="sensibles" className="w-full max-w-7xl mx-auto">
         {/* Onglets */}
         <TabsList className="flex justify-around bg-white rounded-xl mb-6 p-1.5 shadow-md border border-slate-200">
@@ -114,7 +116,6 @@ export default function Adr() {
             </div>
 
             <form className="space-y-5" onSubmit={handleSubmit}>
-              <ToastContainer position="top-center" />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <Label className="text-slate-700 font-semibold mb-2 block">
@@ -182,11 +183,18 @@ export default function Adr() {
                     <Label className="text-slate-700 font-semibold mb-2 block">
                       Type d'incident
                     </Label>
-                    <Input
+                    <select
                       name="Type"
-                      placeholder="Le type (VBG, EAS, et HS) ?"
-                      className="border-orange-300 focus:border-orange-500 focus:ring-orange-500 bg-white"
-                    />
+                      defaultValue=""
+                      className="w-full h-10 rounded-md border border-orange-300 bg-white focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 px-3 text-sm text-slate-700"
+                    >
+                      <option value="" disabled>
+                        Sélectionnez un type
+                      </option>
+                      <option value="VBG">VBG</option>
+                      <option value="EAS">EAS</option>
+                      <option value="HS">HS</option>
+                    </select>
                   </div>
                   <div>
                     <Label className="text-slate-700 font-semibold mb-2 block">

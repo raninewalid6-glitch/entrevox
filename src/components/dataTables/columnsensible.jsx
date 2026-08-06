@@ -141,12 +141,22 @@ const CellActionSensible = ({
 
           <div>
             <label className="text-sm font-semibold">Type</label>
-            <input
-              type="text"
-              value={newType}
+            <select
+              value={newType || ""}
               onChange={(e) => setNewType(e.target.value)}
-              className="mt-1 w-full border rounded-md px-3 py-2"
-            />
+              className="mt-1 w-full border rounded-md px-3 py-2 bg-white"
+            >
+              <option value="" disabled>
+                Sélectionnez un type
+              </option>
+              <option value="VBG">VBG</option>
+              <option value="EAS">EAS</option>
+              <option value="HS">HS</option>
+              {/* Conserve la valeur actuelle si elle n'est pas dans la liste */}
+              {newType && !["VBG", "EAS", "HS"].includes(newType) && (
+                <option value={newType}>{newType}</option>
+              )}
+            </select>
           </div>
 
           <div>
