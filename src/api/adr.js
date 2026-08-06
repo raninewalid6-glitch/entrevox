@@ -99,6 +99,61 @@ export async function EnregistreAdr(Donnee, id) {
   }
 }
 
+// Mise à jour partielle d'un cas NORMAL (table adr).
+export async function PartialUpdateNormal(Donnee, id) {
+  const apiUrl = `${API_BASE_URL}?method=PartialUpdateNormal&id=${id}`;
+
+  const payload = {
+    Nom: Donnee.Nom,
+    Telephone: Donnee.Telephone,
+    Email: Donnee.Email,
+    Adresse: Donnee.Adresse,
+    Lieu: Donnee.Lieu,
+    Responsable: Donnee.Responsable,
+    date: Donnee.date,
+    commentaire: Donnee.commentaire,
+  };
+
+  try {
+    const res = await fetch(apiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error("Erreur réseau détectée");
+    return await res.json();
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du cas normal :", error);
+  }
+}
+
+// Mise à jour partielle d'un cas SENSIBLE (table sensible).
+export async function PartialUpdateSensible(Donnee, id) {
+  const apiUrl = `${API_BASE_URL}?method=PartialUpdateSensible&id=${id}`;
+
+  const payload = {
+    Nom: Donnee.Nom,
+    Telephone: Donnee.Telephone,
+    Lieu: Donnee.Lieu,
+    Type: Donnee.Type,
+    Responsable: Donnee.Responsable,
+    date: Donnee.date,
+    Description: Donnee.Description,
+  };
+
+  try {
+    const res = await fetch(apiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error("Erreur réseau détectée");
+    return await res.json();
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du cas sensible :", error);
+  }
+}
+
 export async function countAdrCases() {
   const apiUrl = `${API_BASE_URL}?method=CountAdrCase`;
   try {
