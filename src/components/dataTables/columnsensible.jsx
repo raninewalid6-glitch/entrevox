@@ -44,6 +44,14 @@ export const columnsSensibles = [
       </p>
     ),
   },
+  {
+    header: "Modification",
+    accessorKey: "updated_at",
+    cell: ({ getValue }) => {
+      const v = getValue();
+      return v ? new Date(v).toLocaleString("fr-FR") : "—";
+    },
+  },
   { header: "Agent", accessorKey: "Agent" },
   // {
   //   header: "Actions",

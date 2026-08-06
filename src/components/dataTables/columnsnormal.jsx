@@ -39,6 +39,14 @@ export const columnormaux = [
     ),
   },
   {
+    accessorKey: "updated_at",
+    header: "Modification",
+    cell: ({ getValue }) => {
+      const v = getValue();
+      return v ? new Date(v).toLocaleString("fr-FR") : "—";
+    },
+  },
+  {
     accessorKey: "Agent",
     header: "Créé par",
   },
