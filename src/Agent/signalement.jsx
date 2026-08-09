@@ -174,6 +174,7 @@ const QUARTIERS_PAR_COMMUNE = {
     "Balbala jajab",
     "cité sogik",
     "cité chabellé",
+    
   ],
   Boulaos: [
     "Quartier 1",
@@ -222,6 +223,7 @@ const QUARTIERS_PAR_COMMUNE = {
     "Paid",
     "Camp-Lelong",
     "place-menelik",
+    "Venise",
     
     
   ],
