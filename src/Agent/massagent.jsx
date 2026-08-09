@@ -1587,13 +1587,18 @@ export default function MassAgent() {
           }
           fields={[
             { key: "numero", label: "N°" },
+            { key: "date", label: "Date" },
             { key: "nom", label: "Nom" },
             { key: "telephone", label: "Téléphone" },
-            { key: "date", label: "Date" },
-            { key: "region_aseri", label: "Région" },
+            { key: "cin", label: "CIN" },
+            { key: "genre", label: "Genre" },
+            { key: "region", label: "Région" },
             { key: "commune", label: "Commune" },
             { key: "quartier", label: "Quartier" },
             { key: "description", label: "Description" },
+            { key: "information", label: "Information" },
+            { key: "TypeProbleme", label: "Type de problème" },
+            { key: "agent", label: "Créé par" },
           ]}
           emptyText={
             searchProjet
