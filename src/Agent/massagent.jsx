@@ -13,9 +13,28 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "../context/AuthContext";
-import { Add_Mass_Project, Mass_LastNumero } from "../api/mass";
+import {
+  Add_Mass_Project,
+  Mass_LastNumero,
+  Mass_ShowByProject,
+} from "../api/mass";
 import useAsync from "../hooks/useAsync";
+import SearchListPanel from "../components/SearchListPanel";
 import { Loader2 } from "lucide-react";
+
+// Liste des projets Mass (valeur envoyée à l'API → libellé affiché)
+const MASS_PROJETS = [
+  { value: "purcsa", label: "PURCSA" },
+  { value: "ps", label: "PS" },
+  { value: "aseri", label: "ASERI" },
+  { value: "fresh_food", label: "Fresh Food" },
+  { value: "agr", label: "AGR" },
+  { value: "eaps", label: "EAPS" },
+  { value: "crec", label: "CREC" },
+  { value: "pass", label: "PASS" },
+  { value: "pirb", label: "PIRB" },
+  { value: "hors_projets", label: "Hors projets" },
+];
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -776,6 +795,32 @@ export default function MassAgent() {
   const [selectedLocalite, setselectedLocaliten] = useState(null);
   const [selectedCommune, setSelectedCommune] = useState(null);
 
+  // ── Panneau de recherche par projet ──
+  const [searchProjet, setSearchProjet] = useState("");
+  const [massList, setMassList] = useState([]);
+  const [loadingMass, setLoadingMass] = useState(false);
+
+  const loadMassByProject = async (projet) => {
+    if (!projet) {
+      setMassList([]);
+      return;
+    }
+    try {
+      setLoadingMass(true);
+      const data = await Mass_ShowByProject(projet);
+      setMassList(Array.isArray(data) ? data : []);
+    } catch (e) {
+      console.error("Erreur chargement Mass :", e);
+      setMassList([]);
+    } finally {
+      setLoadingMass(false);
+    }
+  };
+
+  useEffect(() => {
+    loadMassByProject(searchProjet);
+  }, [searchProjet]);
+
   const {
     register,
     handleSubmit,
@@ -860,6 +905,11 @@ export default function MassAgent() {
       if (result?.success) {
         toast.success("Enregistrée avec succès !");
 
+        // Rafraîchit la liste de recherche si on consulte le projet enregistré
+        if (searchProjet && data.projet === searchProjet) {
+          loadMassByProject(searchProjet);
+        }
+
         // 1️⃣ RESET COMPLET
         reset();
 
@@ -926,7 +976,9 @@ export default function MassAgent() {
   return (
     <div className="min-h-screen bg-slate-100 p-8">
       <ToastContainer position="top-center" />
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
+        {/* ═══ COLONNE GAUCHE — Formulaire (2/3) ═══ */}
+        <div className="xl:col-span-2">
         {/* Header */}
         <div className="bg-gradient-to-r from-slate-700 to-slate-800 px-6 py-5 rounded-t-xl">
           <div className="flex items-center gap-3 mb-3">
@@ -1507,6 +1559,48 @@ export default function MassAgent() {
             procédures du projet sélectionné.
           </p>
         </div>
+        </div>
+
+        {/* ═══ COLONNE DROITE — Recherche par projet (1/3) ═══ */}
+        <SearchListPanel
+          title="Rechercher une plainte"
+          items={massList}
+          loading={loadingMass}
+          searchKeys={["numero", "nom", "telephone"]}
+          searchPlaceholder="Rechercher par numéro, nom ou téléphone..."
+          headerExtra={
+            <div className="mb-4">
+              <label className="block font-medium mb-1">Projet</label>
+              <select
+                value={searchProjet}
+                onChange={(e) => setSearchProjet(e.target.value)}
+                className="w-full border p-2 rounded bg-white"
+              >
+                <option value="">— Sélectionner un projet —</option>
+                {MASS_PROJETS.map((p) => (
+                  <option key={p.value} value={p.value}>
+                    {p.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          }
+          fields={[
+            { key: "numero", label: "N°" },
+            { key: "nom", label: "Nom" },
+            { key: "telephone", label: "Téléphone" },
+            { key: "date", label: "Date" },
+            { key: "region_aseri", label: "Région" },
+            { key: "commune", label: "Commune" },
+            { key: "quartier", label: "Quartier" },
+            { key: "description", label: "Description" },
+          ]}
+          emptyText={
+            searchProjet
+              ? "Aucune plainte pour ce projet"
+              : "Sélectionnez un projet pour afficher les plaintes"
+          }
+        />
       </div>
     </div>
   );

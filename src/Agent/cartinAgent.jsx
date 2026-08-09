@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,7 +18,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import useAsync from "../hooks/useAsync";
-import { CreateCartin } from "../api/cartun";
+import { CreateCartin, GetAllCartin } from "../api/cartun";
+import SearchListPanel from "../components/SearchListPanel";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../context/AuthContext";
@@ -50,12 +52,33 @@ export default function Cartinagent() {
   const { user } = useAuth();
   const { data, error, loading, execute } = useAsync(CreateCartin, []);
 
+  // Liste des cart'in (colonne de recherche)
+  const [cartins, setCartins] = useState([]);
+  const [loadingCartins, setLoadingCartins] = useState(false);
+
+  const loadCartins = async () => {
+    try {
+      setLoadingCartins(true);
+      const res = await GetAllCartin();
+      setCartins(Array.isArray(res) ? res : []);
+    } catch (e) {
+      console.error("Erreur chargement cart'in :", e);
+    } finally {
+      setLoadingCartins(false);
+    }
+  };
+
+  useEffect(() => {
+    loadCartins();
+  }, []);
+
   const onSubmit = async (data) => {
     try {
       const result = await execute(data, user.id);
 
       if (result?.success) {
         toast.success("Cart'in enregistrée avec succès !");
+        loadCartins(); // rafraîchit la liste de recherche
       } else {
         toast.error("Erreur lors de l'enregistrement.");
       }
@@ -70,7 +93,9 @@ export default function Cartinagent() {
   return (
     <div className="min-h-screen bg-slate-100 p-8">
       <ToastContainer position="top-center" />
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+        {/* ═══ COLONNE GAUCHE — Formulaire ═══ */}
+        <div>
         {/* Header */}
         <div className="bg-gradient-to-r from-slate-700 to-slate-800 px-6 py-5 rounded-t-xl">
           <div className="flex items-center gap-3 mb-3">
@@ -246,6 +271,26 @@ export default function Cartinagent() {
             service client Cart'in.
           </p>
         </div>
+        </div>
+
+        {/* ═══ COLONNE DROITE — Liste recherchable ═══ */}
+        <SearchListPanel
+          title="Liste des Cart'in"
+          items={cartins}
+          loading={loadingCartins}
+          searchKeys={["numero_commande", "nom", "numero_telephone"]}
+          searchPlaceholder="Rechercher par commande, nom ou téléphone..."
+          fields={[
+            { key: "numero_commande", label: "N° commande" },
+            { key: "nom", label: "Nom" },
+            { key: "numero_telephone", label: "Téléphone" },
+            { key: "date_commande", label: "Date commande" },
+            { key: "probleme", label: "Problème" },
+            { key: "reponse_fournie", label: "Réponse fournie" },
+            { key: "Agent", label: "Créé par" },
+          ]}
+          emptyText="Aucune Cart'in enregistrée"
+        />
       </div>
     </div>
   );

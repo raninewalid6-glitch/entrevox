@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,8 +17,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { SaveColis } from "../api/coli_non_found";
+import { ShowColis } from "../api/annulation_cmd";
 import useAsync from "../hooks/useAsync";
 import { useAuth } from "../context/AuthContext";
+import SearchListPanel from "../components/SearchListPanel";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -37,6 +40,26 @@ const formSchema = z.object({
 export default function LaPoste() {
   const { user } = useAuth();
   const { execute } = useAsync(SaveColis, []);
+
+  // Liste des colis (colonne de recherche)
+  const [colis, setColis] = useState([]);
+  const [loadingColis, setLoadingColis] = useState(false);
+
+  const loadColis = async () => {
+    try {
+      setLoadingColis(true);
+      const data = await ShowColis();
+      setColis(Array.isArray(data) ? data : []);
+    } catch (e) {
+      console.error("Erreur chargement colis :", e);
+    } finally {
+      setLoadingColis(false);
+    }
+  };
+
+  useEffect(() => {
+    loadColis();
+  }, []);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -58,6 +81,7 @@ export default function LaPoste() {
 
       if (result?.success) {
         toast.success("Colis enregistré avec succès !");
+        loadColis(); // rafraîchit la liste de recherche
       } else {
         toast.error("Erreur lors de l'enregistrement.");
         console.error("Erreur API:", result?.error);
@@ -73,7 +97,9 @@ export default function LaPoste() {
   return (
     <div className="min-h-screen bg-slate-100 p-8">
       <ToastContainer position="top-center" />
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+        {/* ═══ COLONNE GAUCHE — Formulaire ═══ */}
+        <div>
         {/* 🟦 En-tête */}
         <div className="bg-gradient-to-r from-slate-700 to-slate-800 px-6 py-5 rounded-t-xl">
           <div className="inline-block px-3 py-1 bg-blue-700 text-white text-xs font-semibold rounded uppercase tracking-wide">
@@ -225,6 +251,27 @@ export default function LaPoste() {
             </form>
           </Form>
         </div>
+        </div>
+
+        {/* ═══ COLONNE DROITE — Liste recherchable ═══ */}
+        <SearchListPanel
+          title="Liste des colis"
+          items={colis}
+          loading={loadingColis}
+          searchKeys={["reference", "nom", "telephone"]}
+          searchPlaceholder="Rechercher par référence, nom ou téléphone..."
+          fields={[
+            { key: "reference", label: "Référence" },
+            { key: "nom", label: "Nom" },
+            { key: "telephone", label: "Téléphone" },
+            { key: "type", label: "Type" },
+            { key: "provenance", label: "Provenance" },
+            { key: "date", label: "Date" },
+            { key: "reponse_fournie", label: "Réponse fournie" },
+            { key: "Agent", label: "Créé par" },
+          ]}
+          emptyText="Aucun colis enregistré"
+        />
       </div>
     </div>
   );

@@ -334,6 +334,21 @@ export async function Mass_Agr() {
   }
 }
 
+// Charge les plaintes d'un projet donné (pour le panneau de recherche).
+export async function Mass_ShowByProject(projet) {
+  const api = `${API_BASE_URL}?method=Mass_Show&projets=${projet}`;
+  try {
+    const response = await fetch(api, { method: "GET" });
+    if (!response.ok) return [];
+    const data = await response.json();
+    if (data?.error) return [];
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    console.error("Erreur lors du chargement des plaintes Mass :", error);
+    return [];
+  }
+}
+
 // la fonction d'ajouter un projet mass
 export async function Add_Mass_Project(Donnee, idUser) {
   const api = `${API_BASE_URL}?method=Mass_Insert&iduser=${idUser}`;
