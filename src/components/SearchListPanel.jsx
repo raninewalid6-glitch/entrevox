@@ -71,16 +71,22 @@ export default function SearchListPanel({
                 className="border rounded-lg p-4 hover:shadow-md transition-shadow"
               >
                 <div className="text-sm space-y-1">
-                  {fields.map((f) => (
-                    <p key={f.key} className="break-words">
-                      <span className="font-medium">{f.label} :</span>{" "}
-                      {it?.[f.key] !== undefined &&
-                      it?.[f.key] !== null &&
-                      it?.[f.key] !== ""
-                        ? it[f.key]
-                        : "—"}
-                    </p>
-                  ))}
+                  {fields.map((f) => {
+                    const raw = it?.[f.key];
+                    const hasValue =
+                      raw !== undefined && raw !== null && raw !== "";
+                    const display = hasValue
+                      ? f.format
+                        ? f.format(raw)
+                        : raw
+                      : "—";
+                    return (
+                      <p key={f.key} className="break-words">
+                        <span className="font-medium">{f.label} :</span>{" "}
+                        {display}
+                      </p>
+                    );
+                  })}
                 </div>
               </div>
             ))}

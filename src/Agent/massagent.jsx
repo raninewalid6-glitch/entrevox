@@ -1586,19 +1586,25 @@ export default function MassAgent() {
             </div>
           }
           fields={[
-            { key: "numero", label: "N°" },
-            { key: "date", label: "Date" },
+            { key: "numero", label: "Numéro plainte" },
+            { key: "date", label: "Date saisi" },
             { key: "nom", label: "Nom" },
+            { key: "Nomconjointe", label: "Nom conjointe(e)" },
             { key: "telephone", label: "Téléphone" },
+            { key: "Date_naissance", label: "Date de naissance" },
             { key: "cin", label: "CIN" },
             { key: "genre", label: "Genre" },
             { key: "region", label: "Région" },
             { key: "commune", label: "Commune" },
             { key: "quartier", label: "Quartier" },
+            { key: "quartierImpacter", label: "Quartier impacté" },
+            { key: "numEtudiant", label: "N° étudiant universitaire" },
             { key: "description", label: "Description" },
             { key: "information", label: "Information" },
+            { key: "category_plainte", label: "Catégorie plainte" },
             { key: "TypeProbleme", label: "Type de problème" },
             { key: "agent", label: "Créé par" },
+            { key: "updated_at", label: "Dernière modification" },
           ]}
           emptyText={
             searchProjet
