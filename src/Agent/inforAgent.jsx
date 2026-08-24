@@ -35,6 +35,7 @@ const formSchema = z.object({
   nom: z.string().min(2, "Nom requis"),
   telephone: z.string().min(8, "Numéro invalide"),
   commentaire: z.string().min(5, "Commentaire obligatoire"),
+  reponse_fournie: z.string().optional(),
 });
 
 export default function InformationAgent() {
@@ -48,6 +49,7 @@ export default function InformationAgent() {
       nom: "",
       telephone: "",
       commentaire: "",
+      reponse_fournie: "",
     },
   });
 
@@ -198,6 +200,24 @@ export default function InformationAgent() {
                     <FormLabel>Commentaire</FormLabel>
                     <FormControl>
                       <Textarea placeholder="Votre commentaire..." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {/* Réponse fournie */}
+              <FormField
+                control={form.control}
+                name="reponse_fournie"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Réponse fournie (optionnel)</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Réponse communiquée au client"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

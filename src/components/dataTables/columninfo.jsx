@@ -16,10 +16,18 @@ import { useAuth } from "../../context/AuthContext";
 import { Info_Update } from "../../api/information"; // ← adaptez le chemin
 
 // ✅ Composant d'action (modification)
-const CellAction = ({ nom, id, telephone, commentaire, updated_at }) => {
+const CellAction = ({
+  nom,
+  id,
+  telephone,
+  commentaire,
+  reponse_fournie,
+  updated_at,
+}) => {
   const [newNom, setNewNom] = useState(nom);
   const [newTelephone, setNewTelephone] = useState(telephone);
   const [newCommentaire, setNewCommentaire] = useState(commentaire);
+  const [newReponseFournie, setNewReponseFournie] = useState(reponse_fournie);
   const { user } = useAuth();
 
   // ⚠️ Adaptez le rôle autorisé selon votre logique métier
@@ -32,6 +40,7 @@ const CellAction = ({ nom, id, telephone, commentaire, updated_at }) => {
       nom: newNom,
       telephone: newTelephone,
       commentaire: newCommentaire,
+      reponse_fournie: newReponseFournie,
       updated_by: user?.id,
       updated_at: new Date().toISOString(),
     };
@@ -112,6 +121,16 @@ const CellAction = ({ nom, id, telephone, commentaire, updated_at }) => {
             />
           </div>
 
+          {/* Réponse fournie */}
+          <div>
+            <label className="text-sm font-semibold">Réponse fournie</label>
+            <Textarea
+              value={newReponseFournie}
+              onChange={(e) => setNewReponseFournie(e.target.value)}
+              className="mt-1"
+            />
+          </div>
+
           <div className="flex justify-end gap-2">
             <Button variant="secondary">Annuler</Button>
             <Button onClick={handleSave}>Enregistrer</Button>
@@ -133,6 +152,15 @@ export const columnsInformation = [
     cell: ({ row }) => (
       <div className="min-w-[500px] max-w-[700px] whitespace-pre-wrap">
         {row.original.commentaire}
+      </div>
+    ),
+  },
+  {
+    accessorKey: "reponse_fournie",
+    header: "Réponse fournie",
+    cell: ({ row }) => (
+      <div className="min-w-[300px] max-w-[500px] whitespace-pre-wrap">
+        {row.original.reponse_fournie}
       </div>
     ),
   },
@@ -158,6 +186,7 @@ export const columnsInformation = [
       const id = row?.original.id;
       const telephone = row?.original.telephone;
       const commentaire = row?.original.commentaire;
+      const reponse_fournie = row?.original.reponse_fournie;
       const updated_at = row?.original.updated_at;
       return (
         <CellAction
@@ -165,6 +194,7 @@ export const columnsInformation = [
           id={id}
           telephone={telephone}
           commentaire={commentaire}
+          reponse_fournie={reponse_fournie}
           updated_at={updated_at}
         />
       );

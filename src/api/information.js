@@ -23,6 +23,7 @@ export async function Info_Create(Donnee, id) {
     nom: Donnee.nom,
     telephone: Donnee.telephone,
     commentaire: Donnee.commentaire,
+    reponse_fournie: Donnee.reponse_fournie,
   };
   try {
     const res = await fetch(apiUrl, {
@@ -58,6 +59,7 @@ export async function Info_Update(Donnee, id) {
     nom: Donnee.nom,
     telephone: Donnee.telephone,
     commentaire: Donnee.commentaire,
+    reponse_fournie: Donnee.reponse_fournie,
     updated_by: Donnee.updated_by,
     updated_at: Donnee.updated_at,
   };
