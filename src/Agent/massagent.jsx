@@ -346,6 +346,7 @@ const quartiersBoulaos = [
   " Makamoukarama",
   "Gachamaleh",
   "Cité Aviation",
+  "saline ouest ",
 ];
 const quartiersRasdika = ["Plateau", "Marabout", "Héron", "Serpent", "Paid", "Camp-Lelong"];
 
