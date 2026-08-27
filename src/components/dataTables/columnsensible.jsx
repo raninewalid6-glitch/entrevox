@@ -35,7 +35,9 @@ const CellActionSensible = ({
   const [newLieu, setNewLieu] = useState(Lieu);
   const [newType, setNewType] = useState(Type);
   const [newResponsable, setNewResponsable] = useState(Responsable);
-  const [newDate, setNewDate] = useState(String(date || "").slice(0, 10));
+  const [newDate, setNewDate] = useState(
+    String(date || "").replace(" ", "T").slice(0, 16)
+  );
   const [newDescription, setNewDescription] = useState(Description);
 
   const { user } = useAuth();
@@ -52,7 +54,7 @@ const CellActionSensible = ({
       setNewLieu(Lieu);
       setNewType(Type);
       setNewResponsable(Responsable);
-      setNewDate(String(date || "").slice(0, 10));
+      setNewDate(String(date || "").replace(" ", "T").slice(0, 16));
       setNewDescription(Description);
     }
   };
@@ -64,7 +66,8 @@ const CellActionSensible = ({
       Lieu: newLieu,
       Type: newType,
       Responsable: newResponsable,
-      date: newDate,
+      // "2026-08-27T14:35" -> "2026-08-27 14:35:00" (format attendu par MySQL)
+      date: newDate ? newDate.replace("T", " ") + ":00" : newDate,
       Description: newDescription,
     };
 
@@ -170,9 +173,9 @@ const CellActionSensible = ({
           </div>
 
           <div>
-            <label className="text-sm font-semibold">Date</label>
+            <label className="text-sm font-semibold">Date et heure</label>
             <input
-              type="date"
+              type="datetime-local"
               value={newDate}
               onChange={(e) => setNewDate(e.target.value)}
               className="mt-1 w-full border rounded-md px-3 py-2"

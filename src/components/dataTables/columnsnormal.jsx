@@ -36,7 +36,9 @@ const CellActionNormal = ({
   const [newAdresse, setNewAdresse] = useState(Adresse);
   const [newLieu, setNewLieu] = useState(Lieu);
   const [newResponsable, setNewResponsable] = useState(Responsable);
-  const [newDate, setNewDate] = useState(String(date || "").slice(0, 10));
+  const [newDate, setNewDate] = useState(
+    String(date || "").replace(" ", "T").slice(0, 16)
+  );
   const [newCommentaire, setNewCommentaire] = useState(commentaire);
 
   const { user } = useAuth();
@@ -55,7 +57,7 @@ const CellActionNormal = ({
       setNewAdresse(Adresse);
       setNewLieu(Lieu);
       setNewResponsable(Responsable);
-      setNewDate(String(date || "").slice(0, 10));
+      setNewDate(String(date || "").replace(" ", "T").slice(0, 16));
       setNewCommentaire(commentaire);
     }
   };
@@ -68,7 +70,8 @@ const CellActionNormal = ({
       Adresse: newAdresse,
       Lieu: newLieu,
       Responsable: newResponsable,
-      date: newDate,
+      // "2026-08-27T14:35" -> "2026-08-27 14:35:00" (format attendu par MySQL)
+      date: newDate ? newDate.replace("T", " ") + ":00" : newDate,
       commentaire: newCommentaire,
     };
 
@@ -174,9 +177,9 @@ const CellActionNormal = ({
           </div>
 
           <div>
-            <label className="text-sm font-semibold">Date</label>
+            <label className="text-sm font-semibold">Date et heure</label>
             <input
-              type="date"
+              type="datetime-local"
               value={newDate}
               onChange={(e) => setNewDate(e.target.value)}
               className="mt-1 w-full border rounded-md px-3 py-2"
