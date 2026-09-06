@@ -62,6 +62,11 @@ export const menuData = [
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/protocole-vbg",
+        label: "Plaintes VBG",
+        icon: <BookOpen className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/cas-sensible-general",
         label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -310,6 +315,11 @@ export const menuDataLigne2020 = [
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Agents/protocole-vbg",
+        label: "Plaintes VBG",
+        icon: <BookOpen className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Agents/cartin",
         label: "Cartin",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -491,6 +501,11 @@ export const menuAllLigne = [
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Agents/protocole-vbg",
+        label: "Plaintes VBG",
+        icon: <BookOpen className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Agents/cartin",
         label: "Cartin",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -617,6 +632,11 @@ export const menuLigne2020Djibtel = [
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Agents/protocole-vbg",
+        label: "Plaintes VBG",
+        icon: <BookOpen className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Agents/cartin",
         label: "Cartin",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -703,6 +723,11 @@ export const menuLigne2020Eab = [
         path: "/Agents/adr",
         label: "ADR",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/protocole-vbg",
+        label: "Plaintes VBG",
+        icon: <BookOpen className="w-4 h-4 opacity-70" />,
       },
       {
         path: "/Agents/cartin",

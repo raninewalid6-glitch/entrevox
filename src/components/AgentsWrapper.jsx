@@ -31,6 +31,7 @@ import CallCenterForm from "../Agent/signalement";
 import CasSensibleGenerale from "../Agent/CasGeneraleSensible";
 import LaPoste from "../Agent/laposteAgent";
 import SupportCartin from "../Agent/supportCartin";
+import ProtocoleVbg from "../Agent/protocoleVbg";
 
 export default function AgentsWrapper() {
   const { user } = useAuth();
@@ -104,6 +105,7 @@ export default function AgentsWrapper() {
         <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
         <Route key="la-poste" path="la-poste" element={<LaPoste />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
+        <Route key="protocole-vbg" path="protocole-vbg" element={<ProtocoleVbg />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
         <Route key="support-cartin" path="support-cartin" element={<SupportCartin />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
@@ -131,6 +133,7 @@ export default function AgentsWrapper() {
         <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
         <Route key="la-poste" path="la-poste" element={<LaPoste />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
+        <Route key="protocole-vbg" path="protocole-vbg" element={<ProtocoleVbg />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
         <Route key="support-cartin" path="support-cartin" element={<SupportCartin />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
@@ -187,6 +190,7 @@ export default function AgentsWrapper() {
         <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
         <Route key="la-poste" path="la-poste" element={<LaPoste />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
+        <Route key="protocole-vbg" path="protocole-vbg" element={<ProtocoleVbg />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
         <Route key="support-cartin" path="support-cartin" element={<SupportCartin />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,
@@ -215,6 +219,7 @@ export default function AgentsWrapper() {
         <Route key="cas-sensible-general" path="cas-sensible-general" element={<CasSensibleGenerale />} />,
         <Route key="la-poste" path="la-poste" element={<LaPoste />} />,
         <Route key="adr" path="adr" element={<AdrAgent />} />,
+        <Route key="protocole-vbg" path="protocole-vbg" element={<ProtocoleVbg />} />,
         <Route key="cartin" path="cartin" element={<Cartinagent />} />,
         <Route key="support-cartin" path="support-cartin" element={<SupportCartin />} />,
         <Route key="recherche" path="recherche" element={<Recherche />} />,

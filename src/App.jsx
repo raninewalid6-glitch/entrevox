@@ -27,6 +27,7 @@ const CommandeannulerData = lazy(
 const ColisNontrouverData = lazy(
   () => import("./superviseur/colis-nontrouver"),
 );
+const ProtocoleVbg = lazy(() => import("./Agent/protocoleVbg"));
 
 // Masse
 const PurcsaData = lazy(() => import("./superviseur/purcsa"));
@@ -95,6 +96,7 @@ export default function App() {
               <Route element={<Layout menuItems={menuData} />}>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/adr" element={<Adr />} />
+                <Route path="/protocole-vbg" element={<ProtocoleVbg />} />
                 <Route
                   path="/cas-sensible-general"
                   element={<CasGeneralSensible />}
