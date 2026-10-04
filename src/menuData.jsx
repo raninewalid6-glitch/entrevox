@@ -98,6 +98,11 @@ export const menuData = [
         icon: <Database className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Pgire",
+        label: "Pgire",
+        icon: <Database className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/commandeannulerData",
         label: "Annulation commande",
         icon: <ClipboardList className="w-4 h-4 opacity-70" />,
@@ -155,12 +160,12 @@ export const menuDataEquipe_Qualiter = [
         label: "Grille d'Évaluation",
         icon: <ClipboardCheck />,
       },
-       {
+      {
         path: "/Equipe_Qualiter/cas-sensible-general",
         label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
-       
+
     ],
   },
 
@@ -183,13 +188,13 @@ export const menuDataEquipe_Qualiter = [
           { path: "/Equipe_Qualiter/masse/hs", label: "Hors Projet" },
         ],
       },
-       
+
       {
         path: "/Equipe_Qualiter/signalement",
         label: "Commerce",
         icon: <ClipboardList className="w-4 h-4" />,
       },
-      
+
       {
         path: "/Equipe_Qualiter/adr",
         label: "ADR",
@@ -222,6 +227,11 @@ export const menuDataEquipe_Qualiter = [
         icon: <Database className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Equipe_Qualiter/Pgire",
+        label: "Pgire",
+        icon: <Database className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Equipe_Qualiter/commandeannulerData",
         label: "Annulation commande",
         icon: <ClipboardList className="w-4 h-4 opacity-70" />,
@@ -242,7 +252,7 @@ export const menuDataEquipe_Qualiter = [
         icon: <ClipboardList className="w-4 h-4" />,
       },
     ],
-    
+
   },
   {
     title: "Ligne EAB",
@@ -262,7 +272,7 @@ export const menuDataEquipe_Qualiter = [
         label: "Djibouti Telecom",
         icon: <Database className="w-4 h-4 opacity-70" />,
       },
-      
+
     ],
   },
 ];
@@ -276,7 +286,7 @@ export const menuFar = [
         label: "Far",
         icon: <FileText className="w-4 h-4 opacity-70" />,
       },
-       {
+      {
         path: "/Agents/cas-sensible-general",
         label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -299,7 +309,7 @@ export const menuDataLigne2020 = [
         label: "La Poste",
         icon: <FileText className="w-4 h-4 opacity-70" />,
       },
-       {
+      {
         path: "/Agents/cas-sensible-general",
         label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -359,7 +369,16 @@ export const menuDataLigne2020 = [
         label: "Information",
         icon: <FileText className="w-4 h-4 opacity-70" />,
       },
-      
+      {
+        path: "/Agents/Pgire",
+        label: "Pgire",
+        icon: <FileText className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/Information",
+        label: "INFORMATION",
+        icon: <Database className="w-4 h-4 opacity-70" />,
+      },
     ],
   },
 ];
@@ -391,8 +410,8 @@ export const menuDataLigneDjiTelcom = [
         label: "Djibouti Telecom",
         icon: <Database className="w-4 h-4 opacity-70" />,
       },
-     
-       {
+
+      {
         path: "/Agents/cas-sensible-general",
         label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -457,7 +476,7 @@ export const menuDataforClientMass = [
       },
     ],
   },
-  
+
   {
     title: "Rapports Deleguer",
     items: [
@@ -484,7 +503,7 @@ export const menuAllLigne = [
         label: "La Poste",
         icon: <FileText className="w-4 h-4 opacity-70" />,
       },
-       {
+      {
         path: "/Agents/cas-sensible-general",
         label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -534,6 +553,16 @@ export const menuAllLigne = [
         path: "/Agents/Far",
         label: "Far",
         icon: <FileText className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/Pgire",
+        label: "Pgire",
+        icon: <FileText className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/Information",
+        label: "INFORMATION",
+        icon: <Database className="w-4 h-4 opacity-70" />,
       },
       {
         path: "/Agents/commandeannulerData",
@@ -593,7 +622,7 @@ export const menuLigneEabDjibtel = [
         label: "Djibouti Telecom",
         icon: <Database className="w-4 h-4 opacity-70" />,
       },
-       {
+      {
         path: "/Agents/cas-sensible-general",
         label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -619,9 +648,9 @@ export const menuLigne2020Djibtel = [
       {
         path: "/Agents/signalement",
         label: "Commerce",
-        icon:<FolderKanban className="w-4 h-4 opacity-70" />,
+        icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
-       {
+      {
         path: "/Agents/cas-sensible-general",
         label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -667,6 +696,11 @@ export const menuLigne2020Djibtel = [
         icon: <FileText className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Agents/Pgire",
+        label: "Pgire",
+        icon: <FileText className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Agents/commandeannulerData",
         label: "Annulation commande",
         icon: <ClipboardList className="w-4 h-4 opacity-70" />,
@@ -675,6 +709,11 @@ export const menuLigne2020Djibtel = [
         path: "/Agents/InformationData",
         label: "Information",
         icon: <FileText className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/Information",
+        label: "INFORMATION",
+        icon: <Database className="w-4 h-4 opacity-70" />,
       },
     ],
   },
@@ -714,7 +753,7 @@ export const menuLigne2020Eab = [
         label: "Commerce",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
       },
-       {
+      {
         path: "/Agents/cas-sensible-general",
         label: "Cas Sensible Général",
         icon: <FolderKanban className="w-4 h-4 opacity-70" />,
@@ -760,6 +799,11 @@ export const menuLigne2020Eab = [
         icon: <FileText className="w-4 h-4 opacity-70" />,
       },
       {
+        path: "/Agents/Pgire",
+        label: "Pgire",
+        icon: <FileText className="w-4 h-4 opacity-70" />,
+      },
+      {
         path: "/Agents/commandeannulerData",
         label: "Annulation commande",
         icon: <ClipboardList className="w-4 h-4 opacity-70" />,
@@ -768,6 +812,11 @@ export const menuLigne2020Eab = [
         path: "/Agents/InformationData",
         label: "Information",
         icon: <FileText className="w-4 h-4 opacity-70" />,
+      },
+      {
+        path: "/Agents/Information",
+        label: "INFORMATION",
+        icon: <Database className="w-4 h-4 opacity-70" />,
       },
       {
         path: "/signalement",

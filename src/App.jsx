@@ -69,6 +69,7 @@ import PlainteForm from "./Agent/Far";
 import FarSup from "./superviseur/FarSup";
 import GrilleEvaluation from "./components/Grille_d'evaluation/grille_evaluation";
 import SignalementSup from "./superviseur/signalement";
+import PgireSup from "./superviseur/PgireSup";
 
 export default function App() {
   return (
@@ -108,6 +109,7 @@ export default function App() {
                 <Route path="/eab" element={<EAB />} />
                 <Route path="/dpcr" element={<SupDpcr />} />
                 <Route path="/Far" element={<FarSup />} />
+                <Route path="/Pgire" element={<PgireSup />} />
                 <Route path="/InformationData" element={<InformationData />} />
                 <Route
                   path="/affectation-ligne"
@@ -167,6 +169,7 @@ export default function App() {
                 <Route path="/Equipe_Qualiter/eab" element={<EAB />} />
                 <Route path="/Equipe_Qualiter/dpcr" element={<SupDpcr />} />
                 <Route path="/Equipe_Qualiter/Far" element={<FarSup />} />
+                <Route path="/Equipe_Qualiter/Pgire" element={<PgireSup />} />
                 <Route
                   path="/Equipe_Qualiter/signalement"
                   element={<SignalementSup />}

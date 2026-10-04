@@ -32,6 +32,8 @@ import CasSensibleGenerale from "../Agent/CasGeneraleSensible";
 import LaPoste from "../Agent/laposteAgent";
 import SupportCartin from "../Agent/supportCartin";
 import ProtocoleVbg from "../Agent/protocoleVbg";
+import PgireForm from "../Agent/PgireForm";
+import InformationData from "../superviseur/information";
 
 export default function AgentsWrapper() {
   const { user } = useAuth();
@@ -123,6 +125,8 @@ export default function AgentsWrapper() {
         />,
         <Route key="signalement" path="signalement" element={<CallCenterForm />} />,
         <Route key="/Far" path="Far" element={<PlainteForm />} />,
+        <Route key="/Pgire" path="Pgire" element={<PgireForm />} />,
+        <Route key="/Information" path="Information" element={<InformationData />} />,
       ];
       break;
     case "allligne":
@@ -157,6 +161,8 @@ export default function AgentsWrapper() {
           element={<h1>Djibouti Télécom</h1>}
         />,
         <Route key="/Far" path="Far" element={<PlainteForm />} />,
+        <Route key="/Pgire" path="Pgire" element={<PgireForm />} />,
+        <Route key="/Information" path="Information" element={<InformationData />} />,
       ];
       break;
 
@@ -197,6 +203,8 @@ export default function AgentsWrapper() {
         <Route key="arulos" path="arulos" element={<ArulosAgent />} />,
         <Route key="dpcr" path="dpcr" element={<FormDPCR />} />,
         <Route key="/Far" path="Far" element={<PlainteForm />} />,
+        <Route key="/Pgire" path="Pgire" element={<PgireForm />} />,
+        <Route key="/Information" path="Information" element={<InformationData />} />,
         <Route
           key="information"
           path="InformationData"
@@ -226,12 +234,14 @@ export default function AgentsWrapper() {
         <Route key="arulos" path="arulos" element={<ArulosAgent />} />,
         <Route key="dpcr" path="dpcr" element={<FormDPCR />} />,
         <Route key="/Far" path="Far" element={<PlainteForm />} />,
+        <Route key="/Pgire" path="Pgire" element={<PgireForm />} />,
+        <Route key="/Information" path="Information" element={<InformationData />} />,
         <Route
           key="information"
           path="InformationData"
           element={<InformationAgent />}
         />,
-       
+
         <Route
           key="commande-annulee"
           path="commandeannulerData"
