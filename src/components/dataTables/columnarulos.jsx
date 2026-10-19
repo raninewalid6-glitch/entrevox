@@ -17,9 +17,7 @@ import { toast } from "react-toastify";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { useAuth } from "../../context/AuthContext";
-
-
-// Garde les imports de useAuth et PartialUpdateMass de ton projet.
+import { PartialUpdateArulos } from "../../api/arulos";
 
 const CellAction = ({
   id,
@@ -35,6 +33,7 @@ const CellAction = ({
   numero_facture,
   nomChefChantier,
   updated_at,
+  onUpdated,
 }) => {
   const { user } = useAuth();
 
@@ -90,11 +89,12 @@ const CellAction = ({
     };
 
     try {
-      const response = await PartialUpdateMass(donnees, id);
+      const response = await PartialUpdateArulos(donnees, id);
 
       if (response?.success) {
         toast.success("Mise à jour réussie");
         setOpen(false);
+        onUpdated?.();
       } else {
         toast.error(response?.message || "Échec de la mise à jour");
       }
@@ -219,8 +219,8 @@ const CellAction = ({
 
 export default CellAction;
 
-// ✅ Colonnes du tableau
-export const Aruloscolumns = [
+// ✅ Colonnes du tableau (fonction pour recevoir le callback de rafraîchissement)
+export const Aruloscolumns = (onUpdated) => [
   { accessorKey: "id", header: "ID" },
   { accessorKey: "nom", header: "Nom" },
   { accessorKey: "numero_telephone", header: "Numéro de Téléphone" },
@@ -244,8 +244,21 @@ export const Aruloscolumns = [
   { accessorKey: "created_at", header: "Date de Création" },
   { accessorKey: "nomChefChantier", header: "Nom du Chef de Chantier" },
   {
+    header: "Dernière modification",
+    accessorKey: "updated_at",
+    cell: ({ row }) => {
+      const date = row.original.updated_at;
+      if (!date) return <span className="text-gray-400">—</span>;
+      return (
+        <span className="text-sm text-gray-700">
+          {new Date(date).toLocaleDateString("fr-FR")}
+        </span>
+      );
+    },
+  },
+  {
     id: "actions",
-    header: "Actions",
+    header: "Modification",
     cell: ({ row }) => {
       const {
         id,
@@ -278,6 +291,7 @@ export const Aruloscolumns = [
           numero_facture={numero_facture}
           nomChefChantier={nomChefChantier}
           updated_at={updated_at}
+          onUpdated={onUpdated}
         />
       );
     },

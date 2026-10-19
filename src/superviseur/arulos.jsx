@@ -5,6 +5,8 @@ import { Aruloscolumns } from "../components/dataTables/columnarulos";
 import { GetAllArulos } from "../api/arulos";
 import useAsync from "../hooks/useAsync";
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Arulos() {
   const { data, error, loading, execute } = useAsync(GetAllArulos, []);
@@ -16,6 +18,7 @@ export default function Arulos() {
   const safeData = Array.isArray(data) ? data : [];
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 to-blue-50 py-8 w-full">
+      <ToastContainer position="top-center" />
       <div className="w-[90%] mx-25">
         {/* Header avec badge */}
         <div className="mb-8">
@@ -38,7 +41,11 @@ export default function Arulos() {
             </p>
           </div>
           <div className="p-6">
-            <DataTable columns={Aruloscolumns} data={safeData} TypeFilter="nom" />
+            <DataTable
+              columns={Aruloscolumns(execute)}
+              data={safeData}
+              TypeFilter="nom"
+            />
           </div>
         </div>
       </div>
