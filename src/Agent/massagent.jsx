@@ -58,6 +58,7 @@ const regionspurcas = {
     "Ara-Madowleh",
     "Goubetto",
     "Daasbiyo",
+    "Doudoub-Balala",
   ],
 
   Dikhil: [
@@ -163,6 +164,7 @@ const regionspurcas = {
 const Deleguerpurcas = {
   "Dok’af": ["Ali Kamil Orbiso"],
   Saboub: ["Med Kamil Med"],
+  "Doudoub-Balala":["a determiner"],
   Aylaadou: ["Ali Hassan Med"],
   Boli: ["Med Kamil Ali"],
   Ougoulfoum: ["Abdo Ali Hamdou "],

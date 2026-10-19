@@ -179,6 +179,15 @@ export const columnsaseri = [
   { header: "Région", accessorKey: "region" },
   { header: "Commune", accessorKey: "commune" },
   { header: "Quartier", accessorKey: "quartier" },
+  {
+    header: "Description",
+    accessorKey: "description",
+    cell: ({ row }) => (
+      <div className="min-w-[500px] max-w-[700px] whitespace-pre-wrap">
+        {row.original.description}
+      </div>
+    ),
+  },
   { header: "Creer par ", accessorKey: "agent" },
 
   {
