@@ -735,7 +735,7 @@ export default function FormDPCR() {
                             <SelectValue placeholder="Choisir une brigade" />
                           </SelectTrigger>
                           <SelectContent className="bg-white">
-                            <SelectItem value="112" className="hover:bg-blue-800 hover:text-white cursor-pointer">Brigade A</SelectItem>
+                            <SelectItem value="112" className="hover:bg-blue-800 hover:text-white cursor-pointer">112</SelectItem>
                            
                           </SelectContent>
                         </Select>
@@ -758,7 +758,7 @@ export default function FormDPCR() {
                             <SelectValue placeholder="Choisir une équipe SMUR" />
                           </SelectTrigger>
                           <SelectContent className="bg-white">
-                            <SelectItem value="119" className="hover:bg-blue-800 hover:text-white cursor-pointer">SMUR 1</SelectItem>
+                            <SelectItem value="119" className="hover:bg-blue-800 hover:text-white cursor-pointer">119</SelectItem>
                            
                           </SelectContent>
                         </Select>
