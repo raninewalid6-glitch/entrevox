@@ -26,6 +26,7 @@ const CellAction = ({
   updated_at,
   telephone,
   Date_naissance,
+  Nomconjointe,
 }) => {
   const [newDescription, setNewDescription] = useState(description);
   const [newInformation, setNewInformation] = useState(information);
@@ -34,6 +35,7 @@ const CellAction = ({
   const [newTelephone, setNewTelephone] = useState(telephone);
   const [newDateNaissance, setNewDateNaissance] = useState(Date_naissance);
   const [newNom, setNewNom] = useState(nom);
+  const [newNomconjointe, setNewNomconjointe] = useState(Nomconjointe);
   const { user } = useAuth();
 
   if (user?.role != "chefCentre") {
@@ -44,6 +46,7 @@ const CellAction = ({
     const Donnee = {
       cin: newCin,
       nom: newNom,
+      Nomconjointe: newNomconjointe,
       telephone: newTelephone,
       Date_naissance: newDateNaissance,
       description: newDescription,
@@ -102,6 +105,17 @@ const CellAction = ({
               type="text"
               value={newNom}
               onChange={(e) => setNewNom(e.target.value)}
+              className="mt-1 w-full border rounded-md px-3 py-2"
+            />
+          </div>
+
+          {/* ✅ Nom conjoint(e) */}
+          <div>
+            <label className="text-sm font-semibold">Nom conjoint(e)</label>
+            <input
+              type="text"
+              value={newNomconjointe}
+              onChange={(e) => setNewNomconjointe(e.target.value)}
               className="mt-1 w-full border rounded-md px-3 py-2"
             />
           </div>
@@ -262,6 +276,7 @@ export const columnsagr = [
       const information = row?.original.information;
       const updated_at = row?.original.updated_at;
       const Date_naissance = row?.original.Date_naissance;
+      const Nomconjointe = row?.original.Nomconjointe;
       return (
         <CellAction
           nom={nom}
@@ -269,6 +284,7 @@ export const columnsagr = [
           cin={cin}
           telephone={telephone}
           Date_naissance={Date_naissance}
+          Nomconjointe={Nomconjointe}
           description={description}
           information={information}
           quartier={quartier}

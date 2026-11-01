@@ -438,6 +438,7 @@ export async function PartialUpdateMass(Donnee, id) {
 
   const payload = {
     nom: Donnee.nom,
+    Nomconjointe: Donnee.Nomconjointe,
     description: Donnee.description,
     quartier: Donnee.quartier,
     information: Donnee.information,
