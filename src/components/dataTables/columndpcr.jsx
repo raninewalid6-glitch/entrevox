@@ -77,7 +77,6 @@ export const columnDPCR = [
       );
     },
   },
-  { accessorKey: "attachments", header: "Pièces jointes" },
   { header: "Creer par ", accessorKey: "agent" },
 
   // {

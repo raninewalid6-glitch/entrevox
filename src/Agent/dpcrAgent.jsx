@@ -87,7 +87,6 @@ const formSchema = z.object({
   route: z.string().min(1, "Route requise."),
   dateHeure: z.string().min(1, "Date et heure requises."),
   gravite: z.enum(["Très urgent", "Urgent", "Moyen", "Faible"]),
-  documents: z.any().optional(),
 });
 
 export default function FormDPCR() {
@@ -599,28 +598,6 @@ export default function FormDPCR() {
                           )
                         )}
                       </RadioGroup>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Documents joints */}
-              <FormField
-                control={form.control}
-                name="documents"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-slate-700 font-medium">
-                      Documents joints
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="file"
-                        multiple
-                        className="border-slate-300 cursor-pointer"
-                        onChange={(e) => field.onChange(e.target.files)}
-                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
