@@ -60,7 +60,7 @@ const routesParVille = {
   Loyada: ["RN10"],
   Obock: ["RN11"],
   Moulhoule: ["RN12"],
-  Randa: ["RN13"],
+  Randa: ["RN11","RN12"],
   Tadjourah: ["RN14"],
 };
 
