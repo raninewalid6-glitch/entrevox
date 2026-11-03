@@ -95,6 +95,9 @@ export default function FormDPCR() {
   const [routes, setRoutes] = useState([]);
   const { user } = useAuth();
   const [dialogOpen, setDialogOpen] = useState(false);
+  // Garde les valeurs soumises pour le résumé et le callId,
+  // car form.reset() vide le formulaire avant l'ouverture du dialog
+  const [submittedData, setSubmittedData] = useState(null);
 
   // form secondaire (dialog)
   const informForm = useForm({
@@ -172,7 +175,10 @@ export default function FormDPCR() {
 
       if (response?.success) {
         toast.success("Enregistrée avec succès !");
+        setSubmittedData(data);
         setDialogOpen(true);
+        // Récupère le prochain identifiant pour l'appel suivant
+        NextIdExecute();
       } else {
         toast.error("Erreur lors de l'enregistrement.");
       }
@@ -193,7 +199,7 @@ export default function FormDPCR() {
     try {
       const response = await SaveInfoExecute({
         ...values,
-        callId: form.getValues("idAppel"),
+        callId: submittedData?.idAppel,
       },user?.id);
 
       if (response.success) {
@@ -658,33 +664,33 @@ export default function FormDPCR() {
               </h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <strong>ID :</strong> {form.getValues("idAppel")}
+                  <strong>ID :</strong> {submittedData?.idAppel || "—"}
                 </li>
                 <li>
-                  <strong>Nom :</strong> {form.getValues("nomAppelant") || "—"}
+                  <strong>Nom :</strong> {submittedData?.nomAppelant || "—"}
                 </li>
                 <li>
-                  <strong>Contact :</strong> {form.getValues("contact") || "—"}
+                  <strong>Contact :</strong> {submittedData?.contact || "—"}
                 </li>
                 <li>
-                  <strong>Usager :</strong> {form.getValues("typeUsager")}
+                  <strong>Usager :</strong> {submittedData?.typeUsager || "—"}
                 </li>
                 <li>
-                  <strong>Demande :</strong> {form.getValues("typeDemande")}
+                  <strong>Demande :</strong> {submittedData?.typeDemande || "—"}
                 </li>
                 <li>
-                  <strong>Description :</strong> {form.getValues("description")}
+                  <strong>Description :</strong>{" "}
+                  {submittedData?.description || "—"}
                 </li>
                 <li>
-                  <strong>Lieu :</strong> {form.getValues("location.region")} /{" "}
-                  {form.getValues("ville")} /{" "}
-                  {form.getValues("route")}
+                  <strong>Lieu :</strong> {submittedData?.region || "—"} /{" "}
+                  {submittedData?.ville || "—"} / {submittedData?.route || "—"}
                 </li>
                 <li>
-                  <strong>Date :</strong> {form.getValues("dateHeure")}
+                  <strong>Date :</strong> {submittedData?.dateHeure || "—"}
                 </li>
                 <li>
-                  <strong>Gravité :</strong> {form.getValues("gravite")}
+                  <strong>Gravité :</strong> {submittedData?.gravite || "—"}
                 </li>
               </ul>
             </div>

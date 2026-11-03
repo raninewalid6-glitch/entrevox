@@ -41,6 +41,42 @@ export const columnDPCR = [
   { accessorKey: "road_name", header: "Route" },
   { accessorKey: "datetime", header: "Date" },
   { accessorKey: "gravite", header: "Gravité" },
+  
+  // ✅ Informations du formulaire "Informer les services"
+  {
+    accessorKey: "dpcr",
+    header: "DPCR informé",
+    cell: ({ row }) =>
+      row.original.dpcr || <span className="text-gray-400">—</span>,
+  },
+  {
+    accessorKey: "gendarmerie",
+    header: "Gendarmerie",
+    cell: ({ row }) =>
+      row.original.gendarmerie || <span className="text-gray-400">—</span>,
+  },
+  {
+    accessorKey: "smur",
+    header: "SMUR",
+    cell: ({ row }) =>
+      row.original.smur || <span className="text-gray-400">—</span>,
+  },
+  {
+    accessorKey: "inform_date",
+    header: "Services informés le",
+    cell: ({ row }) => {
+      const date = row.original.inform_date;
+      if (!date) return <span className="text-gray-400">—</span>;
+      return (
+        <span className="text-sm text-gray-700 whitespace-nowrap">
+          {new Date(date).toLocaleString("fr-FR", {
+            dateStyle: "short",
+            timeStyle: "short",
+          })}
+        </span>
+      );
+    },
+  },
   { accessorKey: "attachments", header: "Pièces jointes" },
   { header: "Creer par ", accessorKey: "agent" },
 
