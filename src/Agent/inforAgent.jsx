@@ -149,6 +149,12 @@ export default function InformationAgent() {
                           Info commerce
                         </SelectItem>
                         <SelectItem
+                          value="DPCR"
+                          className="cursor-pointer hover:bg-blue-950 hover:text-white"
+                        >
+                          Info DPCR
+                        </SelectItem>
+                        <SelectItem
                           value="Ligne 2020"
                           className="cursor-pointer hover:bg-blue-950 hover:text-white"
                         >
