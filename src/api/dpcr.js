@@ -61,6 +61,38 @@ export async function EnregistrerDpcr(dataToSend, iduser) {
   }
 }
 
+export async function PartialUpdateDpcr(Donnee, id) {
+  const apiUrl = `${API_BASE_URL}?method=PartialUpdateDpcr&id=${id}`;
+
+  const payload = {
+    caller_name: Donnee.caller_name,
+    contact: Donnee.contact,
+    user_type: Donnee.user_type,
+    request_type: Donnee.request_type,
+    description: Donnee.description,
+    region: Donnee.region,
+    city: Donnee.city,
+    road_name: Donnee.road_name,
+    datetime: Donnee.datetime,
+    severity: Donnee.severity,
+    updated_by: Donnee.updated_by,
+    updated_at: Donnee.updated_at,
+  };
+
+  try {
+    const res = await fetch(apiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error("Erreur réseau détectée");
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du DPCR :", error);
+  }
+}
+
 export async function InformServices(dataToSend, iduser) {
   const Data = {
     ...dataToSend,

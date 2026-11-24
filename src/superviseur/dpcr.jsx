@@ -3,6 +3,8 @@ import { DpcrShow } from "../api/dpcr";
 import { columnDPCR } from "../components/dataTables/columndpcr";
 import { DataTable } from "../components/dataTables/Tables/data-table";
 import useAsync from "../hooks/useAsync";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SupDpcr() {
   const { data, error, loading, execute } = useAsync(DpcrShow, []);
@@ -15,6 +17,7 @@ export default function SupDpcr() {
 
   return (
     <div className="min-h-screen bg-slate-100 py-8 w-full">
+      <ToastContainer position="top-center" />
       <div className="w-[90%] mx-auto">
         {/* Header */}
         <div className="mb-6">
@@ -46,7 +49,12 @@ export default function SupDpcr() {
             </div>
           ) : (
             <div className="p-6">
-              <DataTable columns={columnDPCR} data={safeData} TypeFilter="caller_name"  DateFilter="date" />
+              <DataTable
+                columns={columnDPCR(execute)}
+                data={safeData}
+                TypeFilter="caller_name"
+                DateFilter="date"
+              />
             </div>
           )}
         </div>
