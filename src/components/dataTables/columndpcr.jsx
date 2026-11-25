@@ -49,6 +49,10 @@ const CellActionDpcr = ({
   road_name,
   datetime,
   gravite,
+  langue,
+  lieu,
+  immatriculation,
+  ref_mobile_money,
   updated_at,
   onUpdated,
 }) => {
@@ -65,6 +69,10 @@ const CellActionDpcr = ({
     String(datetime || "").replace(" ", "T").slice(0, 16)
   );
   const [newGravite, setNewGravite] = useState(gravite);
+  const [newLangue, setNewLangue] = useState(langue);
+  const [newLieu, setNewLieu] = useState(lieu);
+  const [newImmatriculation, setNewImmatriculation] = useState(immatriculation);
+  const [newRefMobileMoney, setNewRefMobileMoney] = useState(ref_mobile_money);
 
   const { user } = useAuth();
 
@@ -86,6 +94,10 @@ const CellActionDpcr = ({
       setNewRoadName(road_name);
       setNewDatetime(String(datetime || "").replace(" ", "T").slice(0, 16));
       setNewGravite(gravite);
+      setNewLangue(langue);
+      setNewLieu(lieu);
+      setNewImmatriculation(immatriculation);
+      setNewRefMobileMoney(ref_mobile_money);
     }
   };
 
@@ -102,6 +114,10 @@ const CellActionDpcr = ({
       // "2026-11-24T14:35" -> "2026-11-24 14:35:00" (format attendu par MySQL)
       datetime: newDatetime ? newDatetime.replace("T", " ") + ":00" : newDatetime,
       severity: newGravite,
+      langue: newLangue,
+      lieu: newLieu,
+      immatriculation: newImmatriculation,
+      ref_mobile_money: newRefMobileMoney,
       updated_by: user?.id,
       updated_at: new Date().toISOString(),
     };
@@ -171,6 +187,22 @@ const CellActionDpcr = ({
             />
           </div>
 
+          {/* Langue */}
+          <div>
+            <label className="text-sm font-semibold">Langue</label>
+            <select
+              value={newLangue || ""}
+              onChange={(e) => setNewLangue(e.target.value)}
+              className="mt-1 w-full border rounded-md px-3 py-2 bg-white"
+            >
+              <option value="">—</option>
+              <option value="Somali">Somali</option>
+              <option value="Afar">Afar</option>
+              <option value="Français">Français</option>
+              <option value="Amharic">Amharic</option>
+            </select>
+          </div>
+
           {/* Type d'usager */}
           <div>
             <label className="text-sm font-semibold">Type d'usager</label>
@@ -236,6 +268,43 @@ const CellActionDpcr = ({
             />
           </div>
 
+          {/* Lieu */}
+          <div>
+            <label className="text-sm font-semibold">Lieu</label>
+            <input
+              type="text"
+              value={newLieu || ""}
+              onChange={(e) => setNewLieu(e.target.value)}
+              className="mt-1 w-full border rounded-md px-3 py-2"
+            />
+          </div>
+
+          {/* Immatriculation */}
+          <div>
+            <label className="text-sm font-semibold">
+              Immatriculation du véhicule
+            </label>
+            <input
+              type="text"
+              value={newImmatriculation || ""}
+              onChange={(e) => setNewImmatriculation(e.target.value)}
+              className="mt-1 w-full border rounded-md px-3 py-2"
+            />
+          </div>
+
+          {/* Réf. Mobile Money */}
+          <div>
+            <label className="text-sm font-semibold">
+              Réf. transaction Mobile Money
+            </label>
+            <input
+              type="text"
+              value={newRefMobileMoney || ""}
+              onChange={(e) => setNewRefMobileMoney(e.target.value)}
+              className="mt-1 w-full border rounded-md px-3 py-2"
+            />
+          </div>
+
           {/* Date et heure */}
           <div>
             <label className="text-sm font-semibold">Date et heure</label>
@@ -276,11 +345,37 @@ export const columnDPCR = (onUpdated) => [
   { accessorKey: "user_type", header: "Usager" },
   { accessorKey: "caller_name", header: "Plaignant" },
   { accessorKey: "contact", header: "Contact" },
+  {
+    accessorKey: "langue",
+    header: "Langue",
+    cell: ({ row }) =>
+      row.original.langue || <span className="text-gray-400">—</span>,
+  },
   { accessorKey: "request_type", header: "Type de requête" },
   { accessorKey: "description", header: "Description" },
   { accessorKey: "region", header: "Région" },
   { accessorKey: "city", header: "Ville" },
   { accessorKey: "road_name", header: "Route" },
+  {
+    accessorKey: "lieu",
+    header: "Lieu",
+    cell: ({ row }) =>
+      row.original.lieu || <span className="text-gray-400">—</span>,
+  },
+  {
+    accessorKey: "immatriculation",
+    header: "Immatriculation",
+    cell: ({ row }) =>
+      row.original.immatriculation || <span className="text-gray-400">—</span>,
+  },
+  {
+    accessorKey: "ref_mobile_money",
+    header: "Réf. Mobile Money",
+    cell: ({ row }) =>
+      row.original.ref_mobile_money || (
+        <span className="text-gray-400">—</span>
+      ),
+  },
   { accessorKey: "datetime", header: "Date" },
   { accessorKey: "gravite", header: "Gravité" },
 
@@ -349,6 +444,10 @@ export const columnDPCR = (onUpdated) => [
         road_name={row.original.road_name}
         datetime={row.original.datetime}
         gravite={row.original.gravite}
+        langue={row.original.langue}
+        lieu={row.original.lieu}
+        immatriculation={row.original.immatriculation}
+        ref_mobile_money={row.original.ref_mobile_money}
         updated_at={row.original.updated_at}
         onUpdated={onUpdated}
       />

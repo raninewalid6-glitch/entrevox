@@ -45,6 +45,10 @@ export async function EnregistrerDpcr(dataToSend, iduser) {
     },
     datetime: dataToSend.dateHeure,
     severity: dataToSend.gravite,
+    langue: dataToSend.langue,
+    lieu: dataToSend.lieu,
+    immatriculation: dataToSend.immatriculation,
+    refMobileMoney: dataToSend.refMobileMoney,
   };
   const apiUrl = `${API_BASE_URL}?method=PlaintInsert&iduser=${iduser}`;
   try {
@@ -75,6 +79,10 @@ export async function PartialUpdateDpcr(Donnee, id) {
     road_name: Donnee.road_name,
     datetime: Donnee.datetime,
     severity: Donnee.severity,
+    langue: Donnee.langue,
+    lieu: Donnee.lieu,
+    immatriculation: Donnee.immatriculation,
+    ref_mobile_money: Donnee.ref_mobile_money,
     updated_by: Donnee.updated_by,
     updated_at: Donnee.updated_at,
   };

@@ -87,6 +87,10 @@ const formSchema = z.object({
   route: z.string().min(1, "Route requise."),
   dateHeure: z.string().min(1, "Date et heure requises."),
   gravite: z.enum(["Très urgent", "Urgent", "Moyen", "Faible"]),
+  langue: z.string().min(1, "Langue requise."),
+  lieu: z.string().optional(),
+  immatriculation: z.string().optional(),
+  refMobileMoney: z.string().optional(),
 });
 
 export default function FormDPCR() {
@@ -142,6 +146,10 @@ export default function FormDPCR() {
       route: "",
       dateHeure: "",
       gravite: "Moyen",
+      langue: "",
+      lieu: "",
+      immatriculation: "",
+      refMobileMoney: "",
     },
   });
 
@@ -319,6 +327,38 @@ export default function FormDPCR() {
                   )}
                 />
               </div>
+
+              {/* Langue */}
+              <FormField
+                control={form.control}
+                name="langue"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-slate-700 font-medium">
+                      Langue
+                    </FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="border-slate-300 bg-white hover:bg-slate-50">
+                          <SelectValue placeholder="Sélectionner la langue de l'appelant" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-white border border-slate-200 shadow-lg">
+                        {["Somali", "Afar", "Français", "Amharic"].map((l) => (
+                          <SelectItem
+                            key={l}
+                            value={l}
+                            className="hover:bg-slate-100 cursor-pointer"
+                          >
+                            {l}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
               {/* Type d'usager */}
               <FormField
@@ -545,6 +585,27 @@ export default function FormDPCR() {
                 />
               </div>
 
+              {/* Lieu */}
+              <FormField
+                control={form.control}
+                name="lieu"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-slate-700 font-medium">
+                      Lieu
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Lieu précis de l'incident"
+                        {...field}
+                        className="border-slate-300"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               {/* Date et heure */}
               <FormField
                 control={form.control}
@@ -603,6 +664,49 @@ export default function FormDPCR() {
                   </FormItem>
                 )}
               />
+
+              {/* Immatriculation & Mobile Money */}
+              <div className="grid md:grid-cols-2 gap-5">
+                <FormField
+                  control={form.control}
+                  name="immatriculation"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-slate-700 font-medium">
+                        Immatriculation du véhicule (optionnel)
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Ex : 12345 DJ"
+                          {...field}
+                          className="border-slate-300"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="refMobileMoney"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-slate-700 font-medium">
+                        Réf. transaction Mobile Money (optionnel)
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="En cas de réclamation de paiement"
+                          {...field}
+                          className="border-slate-300"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
               {/* Boutons */}
               <div className="flex gap-4 pt-4">
